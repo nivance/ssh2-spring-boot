@@ -26,6 +26,7 @@
 	<modules>
 		<module>jsch-spring-boot-autoconfigure</module>
 		<module>jsch-spring-boot-starter</module>
+		<module>jsch-spring-boot-sample</module>
 	</modules>
 
 	<dependencies>
@@ -39,18 +40,6 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<version>${spring.boot.version}</version>
 			<optional>true</optional>
-		</dependency>
-
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.16.8</version>
-		</dependency>
-
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.42</version>
 		</dependency>
 
 		<dependency>

@@ -6,9 +6,20 @@
 		<artifactId>jsch-spring-boot</artifactId>
 		<version>${version}</version>
 	</parent>
-	
-	<groupId>jsch</groupId>
+
 	<artifactId>jsch-spring-boot-autoconfigure</artifactId>
-	
-	
+
+	<properties>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.8</version>
+		</dependency>
+
+	</dependencies>
+
+
 </project>
