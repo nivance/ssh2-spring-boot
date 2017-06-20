@@ -11,14 +11,14 @@ import com.jcraft.jsch.Session;
 public class Test {
 
 	static int lport = 3306;//本地端口
-	static String rhost = "rm-2ze97u8a6gl6xjr6d.mysql.rds.aliyuncs.com";//远程MySQL服务器
+	static String rhost = "1232132.mysql.aliyuncs.com";//远程MySQL服务器
 	static int rport = 3306;//远程MySQL服务端口
 
 	public static void go() {
-		String user = "dev";//SSH连接用户名
-		String password = "everoboved";//SSH连接密码
-		String host = "101.201.55.232";//SSH服务器
-		int port = 22;//SSH访问端口
+		String user = "ldld";	//SSH连接用户名
+		String password = "dfdfd";	//SSH连接密码
+		String host = "23.45.67.89";	//SSH服务器
+		int port = 1024;	//SSH访问端口
 		try {
 			JSch jsch = new JSch();
 			Session session = jsch.getSession(user, host, port);
@@ -39,9 +39,9 @@ public class Test {
 		Statement st = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/everobo_ready", "liuzongling", "everobo2016!");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/eady", "root", "");
 			st = conn.createStatement();
-			String sql = "SELECT COUNT(1) FROM t_book";
+			String sql = "SELECT COUNT(1) FROM dual";
 			rs = st.executeQuery(sql);
 			while (rs.next())
 				System.out.println(rs.getString(1));
