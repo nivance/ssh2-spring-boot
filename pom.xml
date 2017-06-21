@@ -5,7 +5,7 @@
 
 	<groupId>jsch.spring.boot</groupId>
 	<artifactId>jsch-spring-boot</artifactId>
-	<version>${version}</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
 	<name>Jsch Spring Boot AutoConfiguration</name>
@@ -18,7 +18,6 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
-		<version>1.0.0</version>
 		<jsch.version>0.1.54</jsch.version>
 		<spring.boot.version>1.5.4.RELEASE</spring.boot.version>
 	</properties>
