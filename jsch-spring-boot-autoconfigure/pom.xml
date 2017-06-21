@@ -8,8 +8,8 @@
 	</parent>
 
 	<artifactId>jsch-spring-boot-autoconfigure</artifactId>
-	<packaging>jar</packaging>	
-	
+	<packaging>jar</packaging>
+
 	<properties>
 	</properties>
 
@@ -24,12 +24,11 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<version>${spring.boot.version}</version>
 			<optional>true</optional>
-
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.16.8</version>
-		</dependency>
 		</dependency>
 	</dependencies>
 
