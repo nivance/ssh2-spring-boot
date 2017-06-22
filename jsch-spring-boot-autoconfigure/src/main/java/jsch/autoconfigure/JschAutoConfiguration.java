@@ -33,6 +33,7 @@ public class JschAutoConfiguration implements InitializingBean, DisposableBean {
 				+ jschProperties.getProxyPort() + ", user: " + jschProperties.getProxyUser());
 		session.connect();
 		System.out.println("Jsch_AutoConfiguration:::" + session.getServerVersion());// 打印SSH服务器版本信息
+		session.setDaemonThread(true);
 		int assinged_port = session.setPortForwardingL(jschProperties.getLocalPort(), jschProperties.getDestHost(),
 				jschProperties.getDestPort());
 		System.out.println("Jsch_AutoConfiguration:::localhost:" + assinged_port + " -> " + jschProperties.getDestHost()
