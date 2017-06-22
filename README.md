@@ -5,7 +5,7 @@
 
 本项目jsch-spring-boot为方便使用[JSch](http://www.jcraft.com/jsch/)而建。
 
-##### 1.下载和打包
+### 下载打包 
 
 ```
 git clone https://github.com/nivance/jsch-spring-boot.git
@@ -14,17 +14,23 @@ git clone https://github.com/nivance/jsch-spring-boot.git
 因为没有将jsch-spring-boot放到任何maven公共仓库，所以需要将jsch-spring-boot的jar包安装到本地repository中。
 ```
 cd jsch-spring-boot
+
 mvn clean install
+
 cd jsch-spring-boot-starter\target
+
 mvn install:install-file -Dfile=jsch-spring-boot-starter-1.0.0.jar -DgroupId=jsch.spring.boot -DartifactId=jsch-spring-boot-starter -Dversion=1.0.0 -Dpackaging=jar
+
 cd ..\..\jsch-spring-boot-autoconfigure\target
+
 mvn install:install-file -Dfile=jsch-spring-boot-autoconfigure-1.0.0.jar -DgroupId=jsch.spring.boot -DartifactId=jsch-spring-boot-autoconfigure -Dversion=1.0.0 -Dpackaging=jar
 ```
 
-##### 2. 引用
+### 引用
+```
 <dependency>
 	<groupId>jsch.spring.boot</groupId>
 	<artifactId>jsch-spring-boot-starter</artifactId>
 	<version>1.0.0</version>
 </dependency>
-
+```
