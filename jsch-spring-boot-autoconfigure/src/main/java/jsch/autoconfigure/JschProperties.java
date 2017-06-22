@@ -7,7 +7,6 @@ import lombok.Data;
 @Data
 @ConfigurationProperties(prefix = "spring.jsch")
 public class JschProperties {
-
 	/**
 	 * proxy host
 	 */
@@ -40,7 +39,5 @@ public class JschProperties {
 	 * local port 
 	 */
 	private int localPort;
-	
-	
 	
 }
