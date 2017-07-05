@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>ssh2.spring.boot</groupId>
+		<artifactId>ssh2-spring-boot</artifactId>
+		<version>${ssh2.spring.boot.version}</version>
+	</parent>
+
+	<artifactId>ssh2-spring-boot-sample</artifactId>
+	<packaging>jar</packaging>
+	
+	
+	<name>ssh2-spring-boot-sample</name>
+
+	<properties>
+		<mybatis.spring.boot.version>1.3.0</mybatis.spring.boot.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>ganymed.spring.boot</groupId>
+			<artifactId>ganymed-spring-boot-autoconfigure</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>${mybatis.spring.boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.42</version>
+		</dependency>
+
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<profileActive>dev</profileActive>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<profileActive>test</profileActive>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<profileActive>prod</profileActive>
+			</properties>
+		</profile>
+	</profiles>
+</project>

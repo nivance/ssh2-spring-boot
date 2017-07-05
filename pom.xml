@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>jsch.spring.boot</groupId>
-	<artifactId>jsch-spring-boot</artifactId>
-	<version>1.0.0</version>
+	<groupId>ssh2.spring.boot</groupId>
+	<artifactId>ssh2-spring-boot</artifactId>
+	<version>${ssh2.spring.boot.version}</version>
 	<packaging>pom</packaging>
 
-	<name>Jsch Spring Boot AutoConfiguration</name>
+	<name>SSH2 Spring Boot AutoConfiguration</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,22 +18,33 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
-		<jsch.version>0.1.54</jsch.version>
 		<spring.boot.version>1.5.4.RELEASE</spring.boot.version>
+		<ssh2.spring.boot.version>1.0.0</ssh2.spring.boot.version>
 	</properties>
 
 	<modules>
-		<module>jsch-spring-boot-autoconfigure</module>
-		<module>jsch-spring-boot-starter</module>
-		<module>jsch-spring-boot-sample</module>
+		<module>ganymed-spring-boot</module>
+		<module>jsch-spring-boot</module>
+		<module>ssh2-spring-boot-sample</module>
 	</modules>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.jcraft</groupId>
-			<artifactId>jsch</artifactId>
-			<version>${jsch.version}</version>
-		</dependency>
+	<build>
+		<finalName>ssh2-spring-boot</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<compilerArguments>
+						<verbose />
+					</compilerArguments>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-	</dependencies>
 </project>
