@@ -21,11 +21,22 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>ganymed.spring.boot</groupId>
+	
+		<!-- ssh2-spring-boot 2选1 -->
+		<!-- <dependency>
+			<groupId>ssh2.spring.boot</groupId>
 			<artifactId>ganymed-spring-boot-autoconfigure</artifactId>
-			<version>1.0.0</version>
-		</dependency>
+			<version>${ssh2.spring.boot.version}</version>
+		</dependency>  -->
+		
+		<dependency>
+			<groupId>ssh2.spring.boot</groupId>
+			<artifactId>jsch-spring-boot-autoconfigure</artifactId>
+			<version>${ssh2.spring.boot.version}</version>
+		</dependency> 
+		<!-- ssh2-spring-boot 2选1 -->
+		
+		
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>

@@ -25,8 +25,8 @@ jsch-spring-boot/jsch-spring-boot-starter/.project
 jsch-spring-boot/jsch-spring-boot-starter/.classpath
 jsch-spring-boot/jsch-spring-boot-starter/.factorypath
 jsch-spring-boot/jsch-spring-boot-starter/.apt_generated
-jsch-spring-boot-sample/.settings
-jsch-spring-boot-sample/.project
-jsch-spring-boot-sample/.classpath
-jsch-spring-boot-sample/.factorypath
-jsch-spring-boot-sample/.apt_generated
+ssh2-spring-boot-sample/.settings
+ssh2-spring-boot-sample/.project
+ssh2-spring-boot-sample/.classpath
+ssh2-spring-boot-sample/.factorypath
+ssh2-spring-boot-sample/.apt_generated

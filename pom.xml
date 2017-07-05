@@ -29,7 +29,6 @@
 	</modules>
 
 	<build>
-		<finalName>ssh2-spring-boot</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
