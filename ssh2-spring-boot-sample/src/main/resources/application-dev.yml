@@ -15,7 +15,7 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxPoolPreparedStatementPerConnectionSize: 20
-  jsch:
+  ssh2:
     proxy-host: 101.99.35.198
     proxy-port: 2201
     proxy-user: java
