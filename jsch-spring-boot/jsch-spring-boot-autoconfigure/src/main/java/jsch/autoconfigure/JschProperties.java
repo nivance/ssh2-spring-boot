@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import lombok.Data;
 
 @Data
-@ConfigurationProperties(prefix = "spring.jsch")
+@ConfigurationProperties(prefix = "spring.ssh2")
 public class JschProperties {
 	/**
 	 * proxy host

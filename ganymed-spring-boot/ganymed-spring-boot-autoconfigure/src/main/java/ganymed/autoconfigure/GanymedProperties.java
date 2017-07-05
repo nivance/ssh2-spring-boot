@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import lombok.Data;
 
 @Data
-@ConfigurationProperties(prefix = "spring.ganymed")
+@ConfigurationProperties(prefix = "spring.ssh2")
 public class GanymedProperties {
 	/**
 	 * proxy host

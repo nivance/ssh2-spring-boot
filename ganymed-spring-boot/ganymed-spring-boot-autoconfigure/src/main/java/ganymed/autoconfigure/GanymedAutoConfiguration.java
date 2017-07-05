@@ -23,30 +23,30 @@ import ch.ethz.ssh2.LocalPortForwarder;
 @EnableConfigurationProperties(GanymedProperties.class)
 public class GanymedAutoConfiguration implements InitializingBean, DisposableBean {
 
-	private final GanymedProperties jschProperties;
+	private final GanymedProperties ganymedProperties;
 	private Connection conn;
 	private LocalPortForwarder lpf1;
 
-	public GanymedAutoConfiguration(GanymedProperties jschProperties) {
-		this.jschProperties = jschProperties;
+	public GanymedAutoConfiguration(GanymedProperties ganymedProperties) {
+		this.ganymedProperties = ganymedProperties;
 	}
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		conn = new Connection(jschProperties.getProxyHost(), jschProperties.getProxyPort());
+		conn = new Connection(ganymedProperties.getProxyHost(), ganymedProperties.getProxyPort());
 		conn.connect();
-		boolean isAuthenticated = conn.authenticateWithPassword(jschProperties.getProxyUser(),
-				jschProperties.getProxyPassword());
+		boolean isAuthenticated = conn.authenticateWithPassword(ganymedProperties.getProxyUser(),
+				ganymedProperties.getProxyPassword());
 		System.out.printf("Ganymed_AutoConfiguration connect to:::host: %s , port: %d, user: %s, Authenticated: %b \n",
-				jschProperties.getProxyHost(), jschProperties.getProxyPort(), jschProperties.getProxyUser(),
+				ganymedProperties.getProxyHost(), ganymedProperties.getProxyPort(), ganymedProperties.getProxyUser(),
 				isAuthenticated);
 		if (!isAuthenticated) {
 			throw new IOException("Authentication failed.");
 		}
-		lpf1 = conn.createLocalPortForwarder(jschProperties.getLocalPort(), jschProperties.getDestHost(),
-				jschProperties.getDestPort());
-		System.out.printf("Ganymed_AutoConfiguration:::localhost:%d -> %s:%d \n", jschProperties.getLocalPort(),
-				jschProperties.getDestHost(), jschProperties.getDestPort());
+		lpf1 = conn.createLocalPortForwarder(ganymedProperties.getLocalPort(), ganymedProperties.getDestHost(),
+				ganymedProperties.getDestPort());
+		System.out.printf("Ganymed_AutoConfiguration:::localhost:%d -> %s:%d \n", ganymedProperties.getLocalPort(),
+				ganymedProperties.getDestHost(), ganymedProperties.getDestPort());
 	}
 
 	private ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
@@ -57,7 +57,7 @@ public class GanymedAutoConfiguration implements InitializingBean, DisposableBea
 	 */
 	private void startDetectPort() {
 		// 创建一个流套接字并将其连接到本地转发端口上
-		try (Socket socket = new Socket(LOCALHOST, jschProperties.getLocalPort());
+		try (Socket socket = new Socket(LOCALHOST, ganymedProperties.getLocalPort());
 				DataOutputStream out = new DataOutputStream(socket.getOutputStream());) {
 			// 向服务器端发送数据
 			Runnable runnable = new Runnable() {
