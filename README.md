@@ -5,6 +5,10 @@
 
 本项目为方便使用[JSch](http://www.jcraft.com/jsch/)和[GANYMED](https://www.cleondris.com/opensource/ssh2/)而建，可以随意选择一种使用。
 
+
+**注意**：本地的转发端口有可能会退出监听，JSch不能重新建立连接，GANYMED可以重新建立连接，您可视情况用。
+
+
 ### 下载打包 
 
 ```

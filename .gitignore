@@ -30,5 +30,6 @@ ssh2-spring-boot-sample/.project
 ssh2-spring-boot-sample/.classpath
 ssh2-spring-boot-sample/.factorypath
 ssh2-spring-boot-sample/.apt_generated
+ssh2-spring-boot-sample/.springBeans
 ssh2-spring-boot-sample/bin
 ssh2-spring-boot-sample/target
