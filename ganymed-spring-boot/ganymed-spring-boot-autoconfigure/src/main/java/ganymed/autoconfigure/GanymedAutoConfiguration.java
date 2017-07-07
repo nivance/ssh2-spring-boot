@@ -1,7 +1,8 @@
 package ganymed.autoconfigure;
 
-import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.util.Date;
 import java.util.concurrent.Executors;
@@ -33,6 +34,11 @@ public class GanymedAutoConfiguration implements InitializingBean, DisposableBea
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
+		start();
+	}
+
+	private void start() throws Exception {
+		startDetectPort();
 		conn = new Connection(ganymedProperties.getProxyHost(), ganymedProperties.getProxyPort());
 		conn.connect();
 		boolean isAuthenticated = conn.authenticateWithPassword(ganymedProperties.getProxyUser(),
@@ -49,44 +55,50 @@ public class GanymedAutoConfiguration implements InitializingBean, DisposableBea
 				ganymedProperties.getDestHost(), ganymedProperties.getDestPort());
 	}
 
-	private ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
+	private ScheduledExecutorService service = null;
 	private String LOCALHOST = "127.0.0.1";
 
 	/**
-	 * 本地转发请求的端口如果长时间不用，会在一定时间内退出监听， 从而使转发请求失败， 所以启动一个线程定期(每隔30s)给这个端口发请求。
+	 * 每隔60s转发端口发请求，如果失去连接，重新初始化
 	 */
 	private void startDetectPort() {
-		// 创建一个流套接字并将其连接到本地转发端口上
-		try (Socket socket = new Socket(LOCALHOST, ganymedProperties.getLocalPort());
-				DataOutputStream out = new DataOutputStream(socket.getOutputStream());) {
-			// 向服务器端发送数据
-			Runnable runnable = new Runnable() {
-				public void run() {
-					try {
-						System.out.printf("%1$tY-%1$tm-%1$td %tT ping---->%s:%d\n", new Date(), LOCALHOST, 3307);
-						out.writeUTF("ping");
-					} catch (Exception e) {
+		service = Executors.newSingleThreadScheduledExecutor();
+		Runnable runnable = new Runnable() {
+			public void run() {
+				try (Socket socket = new Socket(LOCALHOST, ganymedProperties.getLocalPort());
+						OutputStream out = socket.getOutputStream();) {
+					// 创建一个流套接字并将其连接到本地转发端口上
+					// 向服务器端发送数据
+					out.write("ping".getBytes());
+					out.flush();
+					System.out.printf("%1$tY-%1$tm-%1$td %tT ping---->%s:%d\n", new Date(), LOCALHOST, 3307);
+				} catch (ConnectException e) {
+					try { // 重新初始化
+						shutdown();
+						start();
+					} catch (Exception e1) {
+						e1.printStackTrace();
 					}
+				} catch (Exception e) {
+					System.out.println("ping -------exception:" + e.getMessage());
 				}
-			};
-			service.scheduleAtFixedRate(runnable, 60, 30, TimeUnit.SECONDS);
-		} catch (Exception e) {
-			System.out.printf("%1$tY-%1$tm-%1$td %tT ping---->%s:%d 请求检测异常, 退出ping. errmsg: %s\n", new Date(),
-					LOCALHOST, 3307, e.getMessage());
+			}
+		};
+		service.scheduleAtFixedRate(runnable, 60, 60, TimeUnit.SECONDS);
+	}
+
+	private void shutdown() throws Exception {
+		if (lpf1 != null) {
+			lpf1.close();
 		}
+		if (conn != null) {
+			conn.close();
+		} 
+		System.out.println("Genymed_AutoConfiguration::: destory connection");
 	}
 
 	@Override
 	public void destroy() throws Exception {
-		if (conn != null) {
-			conn.cancelRemotePortForwarding(3307);
-		} else {
-			return;
-		}
-		if (lpf1 != null) {
-			lpf1.close();
-		}
-		conn.close();
-		System.out.println("Genymed_AutoConfiguration::: destory connection");
+		shutdown();
 	}
 }
