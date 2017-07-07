@@ -6,10 +6,11 @@
 	<parent>
 		<groupId>ssh2.spring.boot</groupId>
 		<artifactId>ssh2-spring-boot</artifactId>
-		<version>${ssh2.spring.boot.version}</version>
+		<version>1.0.1</version>
 	</parent>
 
 	<artifactId>jsch-spring-boot</artifactId>
+	<version>1.0.1</version>
 	<packaging>pom</packaging>
 
 	<name>Jsch Spring Boot AutoConfiguration</name>

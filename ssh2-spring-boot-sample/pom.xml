@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>ssh2.spring.boot</groupId>
 		<artifactId>ssh2-spring-boot</artifactId>
-		<version>${ssh2.spring.boot.version}</version>
+		<version>1.0.1</version>
 	</parent>
 
 	<artifactId>ssh2-spring-boot-sample</artifactId>
@@ -26,13 +26,13 @@
 		<!-- <dependency>
 			<groupId>ssh2.spring.boot</groupId>
 			<artifactId>ganymed-spring-boot-autoconfigure</artifactId>
-			<version>${ssh2.spring.boot.version}</version>
+			<version>1.0.1</version>
 		</dependency>  -->
 		
 		<dependency>
 			<groupId>ssh2.spring.boot</groupId>
 			<artifactId>jsch-spring-boot-autoconfigure</artifactId>
-			<version>${ssh2.spring.boot.version}</version>
+			<version>1.0.1</version>
 		</dependency> 
 		<!-- ssh2-spring-boot 2选1 -->
 		

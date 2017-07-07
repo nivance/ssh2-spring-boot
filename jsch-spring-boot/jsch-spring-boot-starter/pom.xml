@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>ssh2.spring.boot</groupId>
 		<artifactId>jsch-spring-boot</artifactId>
-		<version>${ssh2.spring.boot.version}</version>
+		<version>1.0.1</version>
 	</parent>
 
 	<artifactId>jsch-spring-boot-starter</artifactId>
@@ -17,7 +17,7 @@
 		<dependency>
 			<groupId>ssh2.spring.boot</groupId>
 			<artifactId>jsch-spring-boot-autoconfigure</artifactId>
-			<version>${ssh2.spring.boot.version}</version>
+			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

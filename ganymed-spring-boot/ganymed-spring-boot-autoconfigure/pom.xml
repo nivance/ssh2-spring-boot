@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>ssh2.spring.boot</groupId>
 		<artifactId>ganymed-spring-boot</artifactId>
-		<version>${ssh2.spring.boot.version}</version>
+		<version>1.0.1</version>
 	</parent>
 
 	<artifactId>ganymed-spring-boot-autoconfigure</artifactId>
