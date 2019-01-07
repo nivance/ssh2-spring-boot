@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<groupId>ssh2.spring.boot</groupId>
 		<artifactId>ssh2-spring-boot</artifactId>
@@ -12,31 +12,28 @@
 
 	<artifactId>ssh2-spring-boot-sample</artifactId>
 	<packaging>jar</packaging>
-	
-	
+
+
 	<name>ssh2-spring-boot-sample</name>
 
 	<properties>
-		<mybatis.spring.boot.version>1.3.0</mybatis.spring.boot.version>
+		<mybatis.spring.boot.version>1.3.2</mybatis.spring.boot.version>
 	</properties>
 
 	<dependencies>
-	
+
 		<!-- ssh2-spring-boot 2选1 -->
-		<!-- <dependency>
+		<dependency>
 			<groupId>ssh2.spring.boot</groupId>
 			<artifactId>ganymed-spring-boot-autoconfigure</artifactId>
 			<version>1.0.1</version>
-		</dependency>  -->
-		
-		<dependency>
-			<groupId>ssh2.spring.boot</groupId>
-			<artifactId>jsch-spring-boot-autoconfigure</artifactId>
-			<version>1.0.1</version>
-		</dependency> 
+		</dependency>
+
+		<!-- <dependency> <groupId>ssh2.spring.boot</groupId> <artifactId>jsch-spring-boot-autoconfigure</artifactId> 
+			<version>1.0.1</version> </dependency> -->
 		<!-- ssh2-spring-boot 2选1 -->
-		
-		
+
+
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
@@ -73,4 +70,24 @@
 			</properties>
 		</profile>
 	</profiles>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>ssh2.spring.boot.sample.Ssh2SampleApplication</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
