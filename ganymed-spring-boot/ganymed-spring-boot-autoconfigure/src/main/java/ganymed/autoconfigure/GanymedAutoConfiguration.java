@@ -43,7 +43,7 @@ public class GanymedAutoConfiguration implements InitializingBean, DisposableBea
 		conn.connect();
 		boolean isAuthenticated = conn.authenticateWithPassword(ganymedProperties.getProxyUser(),
 				ganymedProperties.getProxyPassword());
-		System.out.printf("Ganymed_AutoConfiguration connect to:::host: %s , port: %d, user: %s, Authenticated: %b \n",
+		System.out.printf("Ganymed_AutoConfiguration connect to ===>>> host: %s, port: %d, user: %s, Authenticated: %b \n",
 				ganymedProperties.getProxyHost(), ganymedProperties.getProxyPort(), ganymedProperties.getProxyUser(),
 				isAuthenticated);
 		if (!isAuthenticated) {
@@ -51,7 +51,7 @@ public class GanymedAutoConfiguration implements InitializingBean, DisposableBea
 		}
 		lpf1 = conn.createLocalPortForwarder(ganymedProperties.getLocalPort(), ganymedProperties.getDestHost(),
 				ganymedProperties.getDestPort());
-		System.out.printf("Ganymed_AutoConfiguration:::localhost:%d -> %s:%d \n", ganymedProperties.getLocalPort(),
+		System.out.printf("Ganymed_AutoConfiguration:::localhost:%d ===>>> %s:%d \n", ganymedProperties.getLocalPort(),
 				ganymedProperties.getDestHost(), ganymedProperties.getDestPort());
 	}
 
@@ -71,7 +71,7 @@ public class GanymedAutoConfiguration implements InitializingBean, DisposableBea
 					// 向服务器端发送数据
 					out.write("ping".getBytes());
 					out.flush();
-					System.out.printf("%1$tY-%1$tm-%1$td %tT ping---->%s:%d\n", new Date(), LOCALHOST, 3307);
+					System.out.printf("%1$tY-%1$tm-%1$td %tT ping---->%s:%d %s\n", new Date(), LOCALHOST, ganymedProperties.getLocalPort(), "is OK!");
 				} catch (ConnectException e) {
 					try { // 重新初始化
 						shutdown();
